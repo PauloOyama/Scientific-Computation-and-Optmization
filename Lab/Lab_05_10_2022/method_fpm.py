@@ -18,11 +18,11 @@ def falsePositiveModified(polynomial: list[int], interval: list[float], toleranc
     f_a = calculatePolynomial(polynomial, a)
     f_b = calculatePolynomial(polynomial, b)
 
-    # OPTIMIZATION CHECKING - if the intervals are the root 
+    # OPTIMIZATION CHECKING - if the intervals are the root
     # if f_a == 0:
-    #     return True, a, 0
+    #     return True, a, count
     # elif f_b == 0:
-    #     return True, b, 0
+    #     return True, b, count
 
     if f_a*f_b >= 0:
         # There's none root between those two
