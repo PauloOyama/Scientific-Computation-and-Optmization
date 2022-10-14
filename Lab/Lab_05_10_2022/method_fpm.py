@@ -1,4 +1,4 @@
-def calculatePolynomial(polynomial: list[int], value_x: float) -> float:
+def calculatePolynomial(polynomial: list[float], value_x: float) -> float:
     sum = 0
     for i in range(len(polynomial)):
         x_part = value_x ** i
@@ -7,7 +7,7 @@ def calculatePolynomial(polynomial: list[int], value_x: float) -> float:
     return sum
 
 
-def falsePositiveModified(polynomial: list[int], interval: list[float], tolerance: float, past_x: float, f_x0: float, count: int):
+def falsePositiveModified(polynomial: list[float], interval: list[float], tolerance: float, past_x: float, f_x0: float, count: int):
     """
     [polynomial] is the polynomial's coefficient, [interval], goes from a(lower bound) to b(upper bound), 
     [tolerance] is the acceptable error, [past_x] is the last x value, [f_x0] is the last f(x) value
@@ -75,11 +75,11 @@ grau = int(input("Grau do polinomio = "))
 coeficientes = []
 
 for i in range(grau):
-    coef = int(input(f"Coefieciente a{i} = "))
+    coef = float(input(f"Coefieciente a{i} = "))
     coeficientes.append(coef)
 
-coef_a = int(input("Intervalo - a  = "))
-coef_b = int(input("Intervalo - b = "))
+coef_a = float(input("Intervalo - a  = "))
+coef_b = float(input("Intervalo - b = "))
 
 interval = [coef_a, coef_b]
 
