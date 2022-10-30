@@ -14,7 +14,9 @@ def falsePositiveModified(polynomial: list[float], interval: list[float], tolera
     """
 
     a = interval[0]
+    print(a)
     b = interval[1]
+    print(b)
     f_a = calculatePolynomial(polynomial, a)
     f_b = calculatePolynomial(polynomial, b)
 
