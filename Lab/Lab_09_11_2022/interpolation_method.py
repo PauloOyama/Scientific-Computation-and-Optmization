@@ -67,7 +67,7 @@ def jordanMethod(matrix_M: list[list[float]],):
     for i in range(len(matrix_result)):
         line_len = len(matrix_result[0]) - 1
         x = matrix_result[i][line_len] / matrix_result[i][i]
-        res[f'X_{i}'] = x
+        res[f'a_{i}'] = x
     return res, matrix_result
 
 
@@ -81,35 +81,51 @@ def findGreaterLine(matrix: list[list[float]], column: int) -> int:
     line_greater = flag.index(values[0])
     return line_greater
 
+def makeMatriz(coef_x:list[float],coef_fx: list[float]):
+    
+    lst = []
+    for i in range(len(coef_x)):
+        line = []
+        for j in range(len(coef_x)):
+            line.append(coef_x[i]**j)
+        line.append(coef_fx[i])
+        lst.append(line)
+
+    return lst
+
+    
+
+
+
+
+def interpolationMethod(coef_x:list[float],coef_fx: list[float]):
+
+    matrix_M = makeMatriz(coef_x,coef_fx)
+
+    result, matriz = jordanMethod(matrix_M=matrix_M)
+
+    print("Matriz com metodo aplicado")
+    for i in range(len(matriz)):
+        print(matriz[i])
+
+    print("Resultados")
+    print(result)
+
 
 # ------------------------------------------ #
 #           Input Section                    #
 # ------------------------------------------ #
 
-number_lines = int(input("Qual o numero de linhas ? "))
-number_terms = int(
-    input("Qual o numero de termos (coef + termos independentes) ? "))
+coef_x = []
+coef_fx = [] 
 
+while True:
+    try:
+        inps = float(input("(Ctrl + z to exit) x = "))
+        coef_x.append(inps)
+        inps = float(input("(Ctrl + z to exit) F(x) = "))
+        coef_fx.append(inps)
+    except EOFError:
+        break
 
-matrix_M = []
-for i in range(number_lines):
-    line_M = []
-    for j in range(number_terms):
-        if j + 1 == number_terms:
-            x = float(input(f'Qual o valor de b = '))
-        else:
-            x = float(input(f'Qual o valor de X_{j+1} = '))
-
-        line_M.append(x)
-
-    matrix_M.append(line_M)
-
-
-result, matriz = jordanMethod(matrix_M=matrix_M)
-
-print("Matriz com metodo aplicado")
-for i in range(len(matriz)):
-    print(matriz[i])
-
-print("Resultados")
-print(result)
+interpolationMethod(coef_x,coef_fx)
